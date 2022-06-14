@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import Loading from "./Loading";
 import FetchingError from "./FetchingError";
 import React from "react";
+import { useState } from "react";
 type ArtObject = {
   title: string;
   artistDisplayName: string;
@@ -28,7 +29,21 @@ function assertIsArtobject(artObject: any): asserts artObject is ArtObject {
   }
 }
 
+const searchArtistName = (event) => {
+  const artist = event.target.getAttribute("data-artist-name");
+  console.log(artist);
+  window.open("https://www.google.com/search?q=" + artist, "_blank");
+};
+
 export default function Artwork() {
+  const [isShown, setIsShown] = useState(false);
+  const setButtonView = (event) => {
+    if (isShown) {
+      setIsShown(false);
+    } else {
+      setIsShown(true);
+    }
+  };
   const {
     status: hashStatus,
     error: hashError,
@@ -68,7 +83,7 @@ export default function Artwork() {
       );
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Problem fetching on Museum Api");
       }
 
       const data = await response.json();
@@ -103,19 +118,42 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="grid grid-cols-2 place-items-center bg-white">
+        <div className="grid md:grid-cols-2 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
           <img
             src={fetched["primaryImage"]}
             alt={fetched["primaryImage"]}
             className="p-8"
           />
           <div className="flex-column">
-            <h1 className="transition ease-in-out delay-150 hover:scale-110 hover:text-slate-500 duration-150 text-2xl place-self-center tracking-tight font-extrabold bg-white text-black  sm:text-2xl md:text-3xl mb-2">
+            <h1 className="transition ease-in-out delay-150 hover:scale-110 hover:text-slate-500 duration-150 text-2xl sm:text-lg justify-self-start tracking-tight font-extrabold bg-white text-black md:text-3xl mb-2">
               {fetched.title}
             </h1>
-            <h3 className="max-w-sm mx-auto text-slate-900 items-center space-x-4 font-extrabold">
-              {fetched["artistDisplayName"]}
-            </h3>
+            <h2
+              className="max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 items-center font-extrabold sm:text-xl md:text-2xl grid grid-cols-3 place-items-center space-x-2"
+              data-artist-name={fetched["artistDisplayName"]}
+              onClick={searchArtistName}
+              onMouseEnter={setButtonView}
+              onMouseOut={setButtonView}
+            >
+              <span className="grid-column-1 col-span-2 place-self-end">
+                {fetched["artistDisplayName"]}
+              </span>
+              {isShown && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mt-2.5 grid-column-2 place-self-start"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              )}
+            </h2>
             <div className="text-slate-900">
               <h3>{fetched["artistDisplayBio"]}</h3>
             </div>
