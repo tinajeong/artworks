@@ -29,15 +29,26 @@ function assertIsArtobject(artObject: any): asserts artObject is ArtObject {
   }
 }
 
+const searchTitle = (event) => {
+  const artist = event.target.getAttribute("data-title");
+  window.open("https://www.metmuseum.org/search-results?q=" + artist, "_blank");
+};
 const searchArtistName = (event) => {
   const artist = event.target.getAttribute("data-artist-name");
-  console.log(artist);
   window.open("https://www.google.com/search?q=" + artist, "_blank");
 };
 
 export default function Artwork() {
   const [isShown, setIsShown] = useState(false);
-  const setButtonView = (event) => {
+  const [isLShown, setIsLShown] = useState(false);
+  const setInfoButtonView = () => {
+    if (isLShown) {
+      setIsLShown(false);
+    } else {
+      setIsLShown(true);
+    }
+  };
+  const setSearchButtonView = () => {
     if (isShown) {
       setIsShown(false);
     } else {
@@ -118,33 +129,57 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="grid md:grid-cols-2 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
+        <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
           <img
             src={fetched["primaryImage"]}
             alt={fetched["primaryImage"]}
             className="p-8"
           />
           <div className="flex-column">
-            <h1 className="transition ease-in-out delay-150 hover:scale-110 hover:text-slate-500 duration-150 text-2xl sm:text-lg justify-self-start tracking-tight font-extrabold bg-white text-black md:text-3xl mb-2">
-              {fetched.title}
-            </h1>
-            <h2
-              className="max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 items-center font-extrabold sm:text-xl md:text-2xl grid grid-cols-3 place-items-center space-x-2"
-              data-artist-name={fetched["artistDisplayName"]}
-              onClick={searchArtistName}
-              onMouseEnter={setButtonView}
-              onMouseOut={setButtonView}
+            <h1
+              className="float-center transition ease-in-out delay-150 hover:scale-110 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
+              onClick={searchTitle}
+              data-title={fetched["title"]}
+              onMouseEnter={setInfoButtonView}
+              onMouseOut={setInfoButtonView}
             >
-              <span className="grid-column-1 col-span-2 place-self-end">
+              {fetched.title}
+              {isLShown && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mt-1 mx-0.5 float-right"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
+            </h1>
+            <h2 className="float-center max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 items-center font-extrabold text-2xl sm:text-lg md:text-xl grid grid-cols-3 place-items-center">
+              <span
+                className="grid-column-1 col-span-2 place-self-end underline underline-offset-4"
+                data-artist-name={fetched["artistDisplayName"]}
+                onClick={searchArtistName}
+                onMouseEnter={setSearchButtonView}
+                onMouseOut={setSearchButtonView}
+              >
                 {fetched["artistDisplayName"]}
               </span>
               {isShown && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mt-2.5 grid-column-2 place-self-start"
+                  className="h-4 w-4 mt-1 mx-0.5 grid-column-2 place-self-start"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  data-artist-name={fetched["artistDisplayName"]}
+                  onClick={searchArtistName}
                 >
                   <path
                     strokeLinecap="round"
@@ -154,13 +189,19 @@ export default function Artwork() {
                 </svg>
               )}
             </h2>
-            <div className="text-slate-900">
-              <h3>{fetched["artistDisplayBio"]}</h3>
-            </div>
             <div>-</div>
-            <h3 className="text-slate-500">{fetched["dimensions"]}</h3>
-            <h3 className="text-slate-500">{fetched["medium"]}</h3>
-            <h3 className="text-slate-500">{fetched["objectDate"]}</h3>
+            {/* <div className="text-slate-900 float-center">
+              <h3>{fetched["artistDisplayBio"]}</h3>
+            </div> */}
+            <h3 className="text-slate-500 float-center hover:underline">
+              {fetched["dimensions"]}
+            </h3>
+            <h3 className="text-slate-500 float-center hover:underline">
+              {fetched["medium"]}
+            </h3>
+            <h3 className="text-slate-500 float-center hover:underline">
+              {fetched["objectDate"]}
+            </h3>
           </div>
         </div>
       ) : (

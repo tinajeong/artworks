@@ -3,7 +3,7 @@ import { BiArchive } from "react-icons/bi";
 export default function NavigationBar() {
   return (
     <div className="nav bg-stone-900 text-left grid grid-cols-4 my-3 place-items-center">
-      <span className="text-white font-extrabold text-3xl col-span-3 mx-auto ml-8 text">
+      <span className="text-white font-extrabold text-3xl md:text-2xl sm:text-2xl col-span-3 mx-auto ml-8 text">
         Today's Artwork
       </span>
       {/* <button
