@@ -129,7 +129,7 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
+        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
           <img
             src={fetched["primaryImage"]}
             alt={fetched["primaryImage"]}
@@ -161,20 +161,18 @@ export default function Artwork() {
                 </svg>
               )}
             </h1>
-            <h2 className="float-center max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 items-center font-extrabold text-2xl sm:text-lg md:text-xl grid grid-cols-3 place-items-center">
-              <span
-                className="grid-column-1 col-span-2 place-self-end underline underline-offset-4"
-                data-artist-name={fetched["artistDisplayName"]}
-                onClick={searchArtistName}
-                onMouseEnter={setSearchButtonView}
-                onMouseOut={setSearchButtonView}
-              >
-                {fetched["artistDisplayName"]}
-              </span>
+            <h2
+              className="flex flex-row flex-wrap justify-center	place-items-cetner underline underline-offset-4 max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl sm:text-lg md:text-xl"
+              onClick={searchArtistName}
+              onMouseEnter={setSearchButtonView}
+              onMouseOut={setSearchButtonView}
+              data-artist-name={fetched["artistDisplayName"]}
+            >
+              <span className="w-auto">{fetched["artistDisplayName"]}</span>
               {isShown && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mt-1 mx-0.5 grid-column-2 place-self-start"
+                  className="h-4 w-4 mt-1 mx-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -190,9 +188,6 @@ export default function Artwork() {
               )}
             </h2>
             <div>-</div>
-            {/* <div className="text-slate-900 float-center">
-              <h3>{fetched["artistDisplayBio"]}</h3>
-            </div> */}
             <h3 className="text-slate-500 float-center hover:underline">
               {fetched["dimensions"]}
             </h3>
