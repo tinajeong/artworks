@@ -2,13 +2,10 @@ import React from "react";
 import { BiArchive } from "react-icons/bi";
 export default function NavigationBar() {
   return (
-    <div className="nav bg-stone-900 text-left grid grid-cols-4 my-3 place-items-center">
-      <span className="text-white font-extrabold text-3xl md:text-2xl sm:text-2xl col-span-3 mx-auto ml-8 text">
+    <div className="nav bg-white underline underline-offset-4 border-y-2 border-slate-800 text-left grid grid-cols-4 pt-2 pb-2 place-items-center">
+      <span className="text-slate-800 font-extrabold text-3xl md:text-2xl sm:text-2xl col-span-3 mx-auto ml-8 text">
         Today's Artwork
       </span>
-      {/* <button
-        className="w-32 h-8 mx-8 place-self-end content-center border-1 hover:scale-110 duration-150 hover:border-stone-400 hover:text-stone-400 rounded-lg bg-slate-700 text-white text-sm font-extrabold text-center overflow-hidden md:max-w-2xl"
-      > */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-8 w-8 mx-8 p-2 place-self-end content-center border-1 hover:scale-110 duration-150 hover:border-stone-400 hover:text-stone-400 rounded-lg bg-slate-700 text-white text-sm font-extrabold text-center overflow-hidden md:max-w-2xl"

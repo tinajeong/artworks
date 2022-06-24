@@ -129,7 +129,7 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center bg-white">
+        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
           <img
             src={fetched["primaryImage"]}
             alt={fetched["primaryImage"]}
@@ -168,7 +168,12 @@ export default function Artwork() {
               onMouseOut={setSearchButtonView}
               data-artist-name={fetched["artistDisplayName"]}
             >
-              <span className="w-auto">{fetched["artistDisplayName"]}</span>
+              <span
+                className="w-auto"
+                data-artist-name={fetched["artistDisplayName"]}
+              >
+                {fetched["artistDisplayName"]}
+              </span>
               {isShown && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +182,6 @@ export default function Artwork() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   data-artist-name={fetched["artistDisplayName"]}
-                  onClick={searchArtistName}
                 >
                   <path
                     strokeLinecap="round"
