@@ -133,11 +133,11 @@ export default function Artwork() {
           <img
             src={fetched["primaryImage"]}
             alt={fetched["primaryImage"]}
-            className="p-8"
+            className="p-8 md:max-w-md lg:max-w-lg"
           />
           <div className="flex-column">
             <h1
-              className="float-center transition ease-in-out delay-150 hover:scale-110 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
+              className="float-center transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
               onClick={searchTitle}
               data-title={fetched["title"]}
               onMouseEnter={setInfoButtonView}
