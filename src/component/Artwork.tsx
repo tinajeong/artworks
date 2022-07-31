@@ -3,31 +3,7 @@ import Loading from "./Loading";
 import FetchingError from "./FetchingError";
 import React from "react";
 import { useState } from "react";
-type ArtObject = {
-  title: string;
-  artistDisplayName: string;
-  artistDisplayBio: string;
-  primaryImage: string;
-  dimensions: string;
-  medium: string;
-  objectDate: string;
-};
-type Hash = {
-  object_id: string;
-  date: string;
-};
-
-function assertIsHash(hash: any): asserts hash is Hash {
-  if (!("object_id" in hash && "date" in hash)) {
-    throw new Error("Not Hash");
-  }
-}
-
-function assertIsArtobject(artObject: any): asserts artObject is ArtObject {
-  if (!("title" in artObject && "artistDisplayName" in artObject)) {
-    throw new Error("Not ArtObject");
-  }
-}
+import { ArtObject, Hash, assertIsArtobject, assertIsHash } from "./Types";
 
 const searchTitle = (event) => {
   const artist = event.target.getAttribute("data-title");
@@ -39,6 +15,7 @@ const searchArtistName = (event) => {
 };
 
 export default function Artwork() {
+  // console.log(new Date().toLocaleString());
   const [isShown, setIsShown] = useState(false);
   const [isLShown, setIsLShown] = useState(false);
   const setInfoButtonView = () => {
