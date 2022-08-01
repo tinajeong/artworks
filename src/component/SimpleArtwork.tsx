@@ -36,12 +36,12 @@ export default function SimpleArtwork() {
     return <FetchingError message={""} />;
   }
   return artworkData.length > 0 ? (
-    <div className="artwork h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 gap-1 md:border-x-2 bg-white">
+    <div className="artwork max-h-full grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 gap-1 md:border-x-2 bg-white">
       {artworkData.map((artwork, index) => {
         return (
           <div
             id={index}
-            className="flex justify-items-center text-left m-2 p-4 border-2 rounded-lg"
+            className="flex justify-items-center text-left m-2 p-4 border-2 border-slate-300 rounded-lg"
           >
             <img
               src={artwork.primaryImage}
@@ -51,7 +51,7 @@ export default function SimpleArtwork() {
               className="self-center md:max-w-md lg:max-w-lg"
             />
 
-            <div className="m-4 self-center">
+            <div className="m-4 p-2 self-center border-l-4 border-slate-200">
               <h2 className="text-slate-900 text-lg text-gray-900 mb-2">
                 {artwork.title}
               </h2>

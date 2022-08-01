@@ -106,11 +106,12 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
+        <div className="max-h-full grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
           <img
-            src={fetched["primaryImage"]}
-            alt={fetched["primaryImage"]}
+            src={fetched["primaryImage"] + "?tr=w-1,h-1"}
+            alt={"artwork image"}
             className="p-8 md:max-w-md lg:max-w-lg"
+            loading="lazy"
           />
           <div className="flex-column">
             <h1
