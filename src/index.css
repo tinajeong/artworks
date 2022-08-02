@@ -2,48 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  font-family: "MaruBuri", sans-serif;
+  font-family: english, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: stonescale;
-}
-
-@font-face {
-  font-family: "MaruBuri";
-  font-weight: 100;
-  font-style: normal;
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-ExtraLight.woff2)
-    format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: "MaruBuri";
-  font-weight: 300;
-  font-style: normal;
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-Light.woff2)
-    format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: "MaruBuri";
   font-weight: 400;
   font-style: normal;
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-Regular.woff2)
-    format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: "MaruBuri";
-  font-weight: 500;
-  font-style: normal;
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-SemiBold.woff2)
-    format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: "MaruBuri";
-  font-weight: 700;
-  font-style: normal;
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-Bold.woff2)
-    format("woff2");
-  font-display: swap;
 }
