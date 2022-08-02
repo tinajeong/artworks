@@ -13,7 +13,7 @@ export default function SimpleArtwork() {
     ["artwork"],
     async () => {
       const response = await fetch(
-        "https://sheet.best/api/sheets/092dc8b9-4940-4cf3-842d-ee99768e998a/tabs/recent"
+        "https://sheet.best/api/sheets/092dc8b9-4940-4cf3-842d-ee99768e998a/tabs/recent/0:4"
       );
 
       if (!response.ok) {

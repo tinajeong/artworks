@@ -106,7 +106,7 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="max-h-full grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
+        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
           <img
             src={fetched["primaryImage"] + "?tr=w-1,h-1"}
             alt={"artwork image"}
@@ -140,7 +140,7 @@ export default function Artwork() {
               )}
             </h1>
             <h2
-              className="flex flex-row flex-wrap justify-center	place-items-cetner underline underline-offset-4 max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl sm:text-lg md:text-xl"
+              className="flex flex-row flex-wrap justify-center	place-items-cetner underline underline-offset-4 max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl md:text-xl sm:text-md"
               onClick={searchArtistName}
               onMouseEnter={setSearchButtonView}
               onMouseOut={setSearchButtonView}
