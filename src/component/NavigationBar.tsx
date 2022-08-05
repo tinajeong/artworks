@@ -10,7 +10,7 @@ export default function NavigationBar() {
       </Link>
       <Link
         to="artworks"
-        className="h-8 w-8 mx-8 p-2 place-self-end content-center border-1 hover:scale-110 duration-150 hover:border-stone-400 hover:text-stone-400 rounded-lg bg-slate-700 text-white text-sm font-extrabold text-center overflow-hidden md:max-w-2xl"
+        className="h-8 w-8 mx-8 p-1.5 place-self-end content-center border-1 hover:scale-110 duration-150 hover:border-stone-400 hover:text-stone-400 rounded-lg bg-white border-2 border-slate-700 text-sm font-extrabold text-center overflow-hidden md:max-w-2xl"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

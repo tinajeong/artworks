@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import FetchingError from "./FetchingError";
 import Loading from "./Loading";
-import { ArtObject, assertIsArtobject } from "./Types";
+import { ArtObject, assertIsArtobject } from "../types/Types";
 
 export default function SimpleArtwork() {
   const {
@@ -41,7 +41,7 @@ export default function SimpleArtwork() {
         return (
           <div
             id={index}
-            className="flex justify-items-center text-left m-2 p-4 border-2 border-slate-300 rounded-lg"
+            className="flex flex-col sm:flex-row flex-column justify-items-center align-middle text-left m-2 p-4 border-2 border-slate-300 rounded-lg"
           >
             <img
               src={artwork.primaryImage}
@@ -51,8 +51,8 @@ export default function SimpleArtwork() {
               className="self-center md:max-w-md lg:max-w-lg"
             />
 
-            <div className="m-4 p-2 self-center border-l-4 border-slate-200">
-              <h2 className="text-slate-900 text-lg text-gray-900 mb-2">
+            <div className="m-4 p-2 self-center border-l-4 border-r-4 border-slate-200">
+              <h2 className="text-slate-900 text-md text-gray-900 mb-2">
                 {artwork.title}
               </h2>
 
