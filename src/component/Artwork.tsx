@@ -3,7 +3,12 @@ import Loading from "./Loading";
 import FetchingError from "./FetchingError";
 import React from "react";
 import { useState } from "react";
-import { ArtObject, Hash, assertIsArtobject, assertIsHash } from "./Types";
+import {
+  ArtObject,
+  Hash,
+  assertIsArtobject,
+  assertIsHash,
+} from "../types/Types";
 
 const searchTitle = (event) => {
   const artist = event.target.getAttribute("data-title");
@@ -113,34 +118,35 @@ export default function Artwork() {
             className="p-8 md:max-w-md lg:max-w-lg"
             loading="lazy"
           />
-          <div className="flex-column">
-            <h1
-              className="float-center transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
+          <div className="flex flex-col border-l-4 border-slate-300 p-4">
+            <div
+              className="flex flex-row flex-wrap transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
               onClick={searchTitle}
               data-title={fetched["title"]}
-              onMouseEnter={setInfoButtonView}
-              onMouseOut={setInfoButtonView}
             >
-              {fetched.title}
-              {isLShown && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mt-1 mx-0.5 float-right"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </h1>
+              <span
+                className="place-content-starts"
+                data-title={fetched["title"]}
+              >
+                {fetched.title}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 mt-1 ml-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
             <h2
-              className="flex flex-row flex-wrap justify-center	place-items-cetner underline underline-offset-4 max-w-sm mx-auto text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl md:text-xl sm:text-md"
+              className="flex flex-row flex-wrap underline underline-offset-4 max-w-sm ml-0 text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl md:text-xl sm:text-md"
               onClick={searchArtistName}
               onMouseEnter={setSearchButtonView}
               onMouseOut={setSearchButtonView}
@@ -169,7 +175,7 @@ export default function Artwork() {
                 </svg>
               )}
             </h2>
-            <div>-</div>
+            <div> </div>
             <h3 className="text-slate-500 float-center hover:underline">
               {fetched["dimensions"]}
             </h3>
