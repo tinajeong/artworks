@@ -51,7 +51,7 @@ export default function SimpleArtwork() {
               className="self-center md:max-w-md lg:max-w-lg"
             />
 
-            <div className="m-4 p-2 self-center border-l-4 border-r-4 border-slate-200">
+            <div className="m-4 p-2 self-left border-l-2 border-slate-200">
               <h2 className="text-slate-900 text-md text-gray-900 mb-2">
                 {artwork.title}
               </h2>

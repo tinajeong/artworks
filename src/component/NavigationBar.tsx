@@ -4,7 +4,7 @@ export default function NavigationBar() {
     <div className="nav bg-white underline underline-offset-4 border-y-2 border-slate-800 text-left grid grid-cols-4 pt-2 pb-2 place-items-center">
       <Link
         to="/"
-        className="text-slate-800 font-extrabold text-3xl md:text-2xl sm:text-lg col-span-3 mx-auto ml-8 text"
+        className="text-slate-800 font-extrabold text-3xl md:text-xl sm:text-md col-span-3 mx-auto ml-8 text"
       >
         Today's Artwork
       </Link>

@@ -118,14 +118,14 @@ export default function Artwork() {
           transitionEnter={false}
           transitionLeave={false}
         >
-          <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center md:border-x-2 bg-white">
+          <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center md:border-x-1.5 bg-white">
             <img
               src={fetched["primaryImage"] + "?tr=w-1,h-1"}
               alt={"artwork image"}
               className="p-8 md:max-w-md lg:max-w-lg"
               loading="lazy"
             />
-            <div className="flex flex-col border-l-4 border-slate-300 p-4">
+            <div className="flex flex-col border-l-2 border-slate-300 p-4">
               <div
                 className="flex flex-row flex-wrap transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
                 onClick={searchTitle}
