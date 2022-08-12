@@ -21,6 +21,7 @@
     "react-query": "^3.38.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-transition-group": "1.x",
     "typescript": "^4.6.3"
   },
   "scripts": {

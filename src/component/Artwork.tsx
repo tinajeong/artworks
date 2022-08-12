@@ -9,7 +9,7 @@ import {
   assertIsArtobject,
   assertIsHash,
 } from "../types/Types";
-
+import { CSSTransitionGroup } from "react-transition-group";
 const searchTitle = (event) => {
   const artist = event.target.getAttribute("data-title");
   window.open("https://www.metmuseum.org/search-results?q=" + artist, "_blank");
@@ -111,82 +111,90 @@ export default function Artwork() {
   return (
     <div className="artwork">
       {fetched ? (
-        <div className="h-screen grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center gap-1 md:border-x-2 bg-white">
-          <img
-            src={fetched["primaryImage"] + "?tr=w-1,h-1"}
-            alt={"artwork image"}
-            className="p-8 md:max-w-md lg:max-w-lg"
-            loading="lazy"
-          />
-          <div className="flex flex-col border-l-4 border-slate-300 p-4">
-            <div
-              className="flex flex-row flex-wrap transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
-              onClick={searchTitle}
-              data-title={fetched["title"]}
-            >
-              <span
-                className="place-content-starts"
+        <CSSTransitionGroup
+          transitionName="example"
+          transitionAppear={true}
+          transitionAppearTimeout={500}
+          transitionEnter={false}
+          transitionLeave={false}
+        >
+          <div className="grid md:grid-cols-2 md:grid-rows-1 sm:grid-rows-2 sm:grid-cols-1 place-items-center md:border-x-2 bg-white">
+            <img
+              src={fetched["primaryImage"] + "?tr=w-1,h-1"}
+              alt={"artwork image"}
+              className="p-8 md:max-w-md lg:max-w-lg"
+              loading="lazy"
+            />
+            <div className="flex flex-col border-l-4 border-slate-300 p-4">
+              <div
+                className="flex flex-row flex-wrap transition ease-in-out delay-150 hover:scale-105 hover:text-slate-500 duration-150 justify-self-start tracking-tight font-extrabold bg-white text-slate-900 text-3xl md:text-2xl sm:text-lg mb-2"
+                onClick={searchTitle}
                 data-title={fetched["title"]}
               >
-                {fetched.title}
-              </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 mt-1 ml-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <h2
-              className="flex flex-row flex-wrap underline underline-offset-4 max-w-sm ml-0 text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl md:text-xl sm:text-md"
-              onClick={searchArtistName}
-              onMouseEnter={setSearchButtonView}
-              onMouseOut={setSearchButtonView}
-              data-artist-name={fetched["artistDisplayName"]}
-            >
-              <span
-                className="w-auto"
-                data-artist-name={fetched["artistDisplayName"]}
-              >
-                {fetched["artistDisplayName"]}
-              </span>
-              {isShown && (
+                <span
+                  className="place-content-starts"
+                  data-title={fetched["title"]}
+                >
+                  {fetched.title}
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mt-1 mx-0.5"
+                  className="h-4 w-4 mt-1 ml-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  data-artist-name={fetched["artistDisplayName"]}
+                  strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-              )}
-            </h2>
-            <div> </div>
-            <h3 className="text-slate-500 float-center hover:underline">
-              {fetched["dimensions"]}
-            </h3>
-            <h3 className="text-slate-500 float-center hover:underline">
-              {fetched["medium"]}
-            </h3>
-            <h3 className="text-slate-500 float-center hover:underline">
-              {fetched["objectDate"]}
-            </h3>
+              </div>
+              <h2
+                className="flex flex-row flex-wrap underline underline-offset-4 max-w-sm ml-0 text-slate-900 hover:scale-110 hover:text-slate-500 duration-150 font-extrabold text-2xl md:text-xl sm:text-md"
+                onClick={searchArtistName}
+                onMouseEnter={setSearchButtonView}
+                onMouseOut={setSearchButtonView}
+                data-artist-name={fetched["artistDisplayName"]}
+              >
+                <span
+                  className="w-auto"
+                  data-artist-name={fetched["artistDisplayName"]}
+                >
+                  {fetched["artistDisplayName"]}
+                </span>
+                {isShown && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mt-1 mx-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    data-artist-name={fetched["artistDisplayName"]}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                )}
+              </h2>
+              <div> </div>
+              <h3 className="text-slate-500 float-center hover:underline">
+                {fetched["dimensions"]}
+              </h3>
+              <h3 className="text-slate-500 float-center hover:underline">
+                {fetched["medium"]}
+              </h3>
+              <h3 className="text-slate-500 float-center hover:underline">
+                {fetched["objectDate"]}
+              </h3>
+            </div>
           </div>
-        </div>
+        </CSSTransitionGroup>
       ) : (
         <Loading />
       )}
